@@ -1,0 +1,63 @@
+.LoginBox {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20%;
+  height: 40vh;
+}
+
+.Welcome {
+  background-color: rgb(81, 185, 208);
+  flex-grow: .7;
+  margin-left: 22%;
+  text-align: center;
+}
+
+.WelcomeText {
+  padding-top: 25%;
+  font-weight: bolder;
+  font-size: 22px;
+}
+
+.WelcomeToText {
+  padding: 5%;
+  font-weight: bolder;
+  font-size: 22px;
+}
+
+.QuizzyText {
+  padding: 3%;
+  font-weight: bolder;
+  font-size: 32px;
+  color: white;
+}
+
+.Login {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  flex-grow: 1;
+  margin-right: 18%;
+}
+
+.LoginHeading {
+  padding-top: 10%;
+  padding-left: 25px;
+  color: black;
+  font-weight: bolder;
+}
+
+.UsernameInput {
+  margin-left: 25px;
+  margin-top: 25px;
+  width: 80%;
+  border: 2px solid black;
+}
+
+.LoginButton {
+  margin-left: 33%;
+  width: 30%;
+  border: 2px solid black;
+  margin-top: 60px;
+  height: 10%;
+
+}
