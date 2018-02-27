@@ -1,5 +1,5 @@
 const Hapi = require('hapi');
-const routes = require('./routes/fetchQuestions');
+const routes = require('./routes/index');
 
 const server = new Hapi.Server();
 
