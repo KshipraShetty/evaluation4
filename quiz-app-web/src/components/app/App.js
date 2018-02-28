@@ -4,10 +4,13 @@ import QuestionContainer from '../questionContainer/questionContainer';
 import './App.css';
 import ScoreCard from '../scoreCard/scoreCard';
 
+const maxObj = [];
+let maxLikes = 0;
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      max: [],
       enableOrNot: false,
       idInuser: 0,
       total: 0,
@@ -18,13 +21,14 @@ class App extends Component {
           uid: '',
           qid: 0,
           answered: false,
+          max: 0,
         }],
       oldQuestions: [],
     };
   }
 
 
-  componentWillMount() {
+  componentDidMount() {
     fetch('/fetchUserDB')
       .then((response) => {
         if (!response.ok) {
@@ -42,14 +46,42 @@ class App extends Component {
   }
 
 calculate = () => {
-  const uid = this.state.usernm;
-  const totalVal = this.state.total;
+  // console.log(this.state.user);
+  // const uid = this.state.usernm;
+  // const totalVal = this.state.total;
+  // for (let i = 0; i < this.state.user.length - 1; i += 1) {
+  //   if (this.state.user[i].uid !== '') {
+  //     for (let j = i + 1; j < this.state.user.length; j += 1) {
+  //       if (this.state.user[i].uid === this.state.user[j].uid) {
+  //         if (this.state.user[i].active) {
+  //           maxLikes += 1;
+  //           console.log('like');
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+  // maxObj.push(this.state.usernm : maxLikes);
+  // console.log(maxObj);
   // fetch(`/updateToUsers/${uid}/${totalVal}`).then((response) => {
   //   console.log(response);
   // });
-  // this.setState({
-  //   display: 2,
-  // });
+  fetch('/fetchUserDB')
+    .then((response) => {
+      if (!response.ok) {
+        console.log('Network request failed');
+      }
+      return response;
+    })
+    .then((data) => {
+      this.setState({
+        user: data.json(),
+      });
+    });
+  console.log(this.state);
+  this.setState({
+    display: 2,
+  });
 }
 
 
@@ -130,7 +162,6 @@ update=(flag, id, length) => {
       this.state.user[i].answer = flag;
       this.state.idInuser = i;
     }
-    console.log(this.state.user[i]);
 
     fetch('/populateUsersDB', {
       method: 'POST',
@@ -141,6 +172,8 @@ update=(flag, id, length) => {
       body: JSON.stringify(this.state.user[i]),
     });
   }
+  if (flag) { maxLikes += 1; }
+
   if (length === 12) {
     this.setState({
       enableOrNot: true,
@@ -153,6 +186,7 @@ update=(flag, id, length) => {
 }
 render() {
   if (this.state.display === 0) {
+    maxLikes = 0;
     return (
       <div className="App" >
         <header className="Header"> Quizzy </header>
@@ -207,8 +241,8 @@ render() {
       </div>
     );
   }
-  const sortedScorers = this.state.users.data.sort((a, b) => a.total < b.total);
-  console.log(sortedScorers);
+  // const sortedScorers = this.state.users.data.sort((a, b) => a.total < b.total);
+  // console.log(sortedScorers);
   return (
     <div className="App" >
       <header className="Header">
@@ -220,9 +254,9 @@ render() {
         Your Score
         </div>
         <div className="Score" >
-          {this.state.user[this.state.idInuser].total}/12
+          {maxLikes}/12
         </div>
-        <ScoreCard className="ScoreCard" storedCards={sortedScorers} />
+
       </div>
       <button className="PlayAgain" onClick={this.playAgain}>
         PlayAgain
