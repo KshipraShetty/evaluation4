@@ -7,19 +7,25 @@ class questionContainer extends Component {
     super(props);
     this.state = {
       total: 0,
+      length: 0,
+      eventList: [],
     };
   }
 
 
   check = (event) => {
+    this.setState({
+      length: this.state.length + 1,
+    });
+    console.log(this.state.length);
+
     let flag = false;
     if (event.target.value === this.props.questionObj.answer) {
       this.state.total += 1;
       flag = true;
-      this.props.update(flag, this.props.questionObj.id);
+      this.props.update(flag, this.props.questionObj.id, this.state.length);
     } else {
-      this.state.total -= 1;
-      this.props.update(flag, this.props.questionObj.id);
+      this.props.update(flag, this.props.questionObj.id, this.state.length);
     }
   }
   render() {
@@ -31,7 +37,6 @@ class questionContainer extends Component {
           name="answer"
           value={eachOpt}
           onClick={this.check}
-          checked
         />{eachOpt}<br />
       </div>
     ));
