@@ -8,7 +8,6 @@ class questionContainer extends Component {
     this.state = {
       total: 0,
       length: 0,
-      eventList: [],
     };
   }
 

@@ -7,6 +7,7 @@ module.exports = {
     "react/forbid-prop-types": 0,
     "guard-for-in": 0,
     "no-restricted-syntax": 0,
+    "react/prop-types": 0,
   },
   "env" : {"es6" : true, "node":true, "jest":true, "browser": true,},
 };

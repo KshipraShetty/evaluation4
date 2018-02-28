@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 // import LoginBox from '../loginBox/loginBox';
 import QuestionContainer from '../questionContainer/questionContainer';
 import './App.css';
-import ScoreCard from '../scoreCard/scoreCard';
+// import ScoreCard from '../scoreCard/scoreCard';
 
-const maxObj = [];
 let maxLikes = 0;
 class App extends Component {
   constructor(props) {
