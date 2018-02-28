@@ -1,8 +1,6 @@
 .App {
   display: flex;
   flex-direction: column;
-  overflow-y: scroll;
-  height: 100vh;
 }
 
 .Header {
@@ -13,6 +11,9 @@
   font-size: 32px;
   padding-top: 20px;
   padding-left: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .MainBody {
@@ -20,6 +21,8 @@
   background-color: rgb(17, 31, 122);
   align-items: center;
   justify-content: center;
+  overflow-y: scroll;
+  height: 1000px;
 }
 
 .UsernameInput {
@@ -32,7 +35,7 @@
 .LoginBox {
   display: flex;
   flex-direction: row;
-  margin-top: 20%;
+  margin-top: 15%;
   height: 40vh;
 }
 
@@ -85,4 +88,43 @@
   margin-top: 60px;
   height: 10%;
 
+}
+
+.Footer {
+  background: none;
+  margin-left: 43%;
+  margin-bottom: 20%;
+  height: 10%;
+  border: 2px solid black;
+  font-size: 24px;
+}
+
+.MainBodyQuiz{
+  overflow-y: scroll;
+}
+
+.ScoreBoard {
+  display: flex;
+  flex-direction: column;
+}
+
+.ScoreHead {
+  padding :2%;
+  color: orange;
+  font-size: 24px;
+}
+
+.Score {
+  font: 400;
+  font-size: 22px;
+  padding :2%;
+}
+
+.ScoreCard {
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  height:400px;
+  font-size: 30px;
+  margin: 10%;
 }

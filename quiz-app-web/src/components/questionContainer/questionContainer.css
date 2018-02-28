@@ -1,0 +1,23 @@
+.QuestionContainer {
+    border: 2px solid black;
+    justify-content: space-between;
+    margin: 10%;
+}
+
+.QuestionNo {
+  border-bottom:2px solid black;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 2%;
+}
+
+.Question {
+  border-bottom:2px solid black;
+  background-color: rgb(138,240,248);
+  padding: 3%;
+  font-size: 16px;
+}
+
+.Options {
+  padding: 3%;
+}

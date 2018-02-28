@@ -8,5 +8,5 @@ module.exports = {
     "guard-for-in": 0,
     "no-restricted-syntax": 0,
   },
-  "env" : {"es6" : true, "node":true, "jest":true},
+  "env" : {"es6" : true, "node":true, "jest":true, "browser": true,},
 };
