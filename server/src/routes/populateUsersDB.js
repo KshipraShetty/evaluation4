@@ -1,10 +1,8 @@
 const models = require('../../models');
 
 const display = (request, response) => {
-  models.users.findOrCreate({
-    where: { id: request.payload.id },
-    default: request.payload,
-  })
+  console.log(request.payload);
+  models.newusersforquiz.upsert(request.payload)
     .then((usersEntered) => {
       if (usersEntered) {
         response({
@@ -16,6 +14,7 @@ const display = (request, response) => {
       }
     })
     .catch((reason) => {
+      console.log(reason);
       response({
         data: {
           reason: reason.message,

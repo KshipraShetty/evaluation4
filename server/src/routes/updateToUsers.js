@@ -2,14 +2,14 @@ const models = require('../../models');
 
 
 const display = (request, response) => {
-  models.users.findOne({
+  models.newusersforquiz.findOne({
     where: {
       id: request.params.uid,
     },
   })
     .then((user) => {
       console.log(user);
-      user.update({ username: request.params.uid, total: request.params.totalVal });
+      user.update({ uid: request.params.uid, qid: request.params.qid, answer: request.params.answer });
     })
     .catch((reason) => {
       response({
@@ -23,7 +23,7 @@ const display = (request, response) => {
 
 
 module.exports = [{
-  path: '/updateToUsers/{uid}/{totalVal}',
+  path: '/updateToUsers/{uid}/{totalVal}/{qid}',
   method: 'GET',
   handler: display,
 }];
