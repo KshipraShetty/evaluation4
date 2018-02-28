@@ -1,32 +1,32 @@
 const models = require('../../models');
 
+
 const display = (request, response) => {
-  models.users.findOrCreate({
-    where: { id: request.payload.id },
-    default: request.payload,
-  })
-    .then((usersEntered) => {
-      if (usersEntered) {
+  models.questionanswers.findAll()
+    .then((users) => {
+      if (users) {
         response({
-          data: usersEntered,
+          data: users,
           statusCode: 200,
         });
       } else {
-        throw new Error('Could not update books information');
+        throw new Error('Could not fetch books information');
       }
     })
+
     .catch((reason) => {
       response({
         data: {
           reason: reason.message,
         },
-        statusCode: 500,
+        statusCode: 404,
       });
     });
 };
 
+
 module.exports = [{
-  path: '/populateUsersDB',
-  method: 'POST',
+  path: '/fetchQuestionDB',
+  method: 'GET',
   handler: display,
 }];
