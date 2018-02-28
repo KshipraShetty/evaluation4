@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import LoginBox from '../loginBox/loginBox';
 import QuestionContainer from '../questionContainer/questionContainer';
 import './App.css';
+import ScoreCard from '../scoreCard/scoreCard';
 
 class App extends Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class App extends Component {
   }
 
 
-  componentWillMount() {
+  componentDidMount() {
     fetch('/fetchUserDB')
       .then((response) => {
         if (!response.ok) {
@@ -118,7 +119,9 @@ calculate = () => {
       });
     }
   }
-
+playAgain=() => {
+  this.setState({ display: 0 });
+}
   update=(flag, id) => {
     // console.log(id);
     for (let i = 0; i < this.state.user.length; i += 1) {
@@ -147,8 +150,6 @@ calculate = () => {
   }
   render() {
     if (this.state.display === 0) {
-      // <LoginBox welcome="Welcome" to="to" quizzy="Quizzy!"
-      // loginHead="Login" username="UserName" loginButton={this.questionsLoader} />
       return (
         <div className="App" >
           <header className="Header"> Quizzy </header>
@@ -176,7 +177,6 @@ calculate = () => {
         </div>
       );
     } else if (this.state.display === 1) {
-      console.log(this.state.user.length);
       const total = 0;
       const oldQuestions = this.state.oldQuestions.map(question => (
         <QuestionContainer
@@ -220,14 +220,11 @@ calculate = () => {
           <div className="Score" >
             {this.state.user[this.state.idInuser].total}/12
           </div>
-          <div className="ScoreCard">
-            <div> {sortedScorers[0].id}<span> {sortedScorers[0].total}</span></div>
-            <div> {sortedScorers[1].id}<span> {sortedScorers[1].total}</span></div>
-            <div> {sortedScorers[2].id}<span> {sortedScorers[2].total}</span></div>
-            <div> {sortedScorers[3].id}<span> {sortedScorers[3].total}</span></div>
-            <div> {sortedScorers[4].id}<span> {sortedScorers[4].total}</span></div>
-          </div>
+          <ScoreCard className="ScoreCard" storedCards={sortedScorers} />
         </div>
+        <button className="PlayAgain" onClick={this.playAgain}>
+        PlayAgain
+        </button>
       </div>
     );
   }

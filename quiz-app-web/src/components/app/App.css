@@ -120,11 +120,9 @@
   padding :2%;
 }
 
-.ScoreCard {
-  display: flex;
-  flex-direction: column;
-  justify-content:space-between;
-  height:400px;
-  font-size: 30px;
-  margin: 10%;
+.PlayAgain {
+  width: 12%;
+  margin-left: 40%;
+  font-size: 20px;
+  border: 2px solid black;
 }
